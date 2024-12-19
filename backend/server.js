@@ -17,7 +17,7 @@ const port = process.env.PORT || 4000;
 
 // CORS configuration - Allow requests from the admin panel's URL
 const corsOptions = {
-  origin: 'https://food-ordering-website-admin-wyi2.onrender.com', // Frontend URL
+  origin: 'https://food-ordering-website-admin-wyi2.onrender.com', 'https://food-ordering-website-frontend-atkr.onrender.com', // Frontend URL
   methods: 'GET,POST,PUT,DELETE',
   allowedHeaders: 'Content-Type,Authorization',
 };
