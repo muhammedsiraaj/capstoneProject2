@@ -3,11 +3,12 @@ import { createContext, useEffect, useState } from "react";
 
 export const StoreContext = createContext(null);
 
-const StoreContextProvider = (props) => {
-  const [cartItems, setCartItems] = useState({});
-  const url = "http://localhost:4000";
-  const [token, setToken] = useState("");
-  const [food_list, setFoodList] = useState([]);
+const StoreContextProvider = (props) =>{
+
+    const [cartItems, setCartItems] = useState({});
+    const url = "http://localhost:4000"
+    const [token,setToken] = useState("")
+    const [food_list, setFoodList] = useState([]);
 
   const addToCart = async (itemId) => {
     if (!cartItems[itemId]) {
@@ -78,4 +79,4 @@ const StoreContextProvider = (props) => {
   return <StoreContext.Provider value={contextValue}>{props.children}</StoreContext.Provider>;
 };
 
-export default StoreContextProvider;
+export default StoreContextProvider
