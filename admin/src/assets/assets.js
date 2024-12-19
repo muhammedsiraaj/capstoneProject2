@@ -6,7 +6,7 @@ import upload_area from './upload_area.png'
 import parcel_icon from './parcel_icon.png'
 import cross_icon from './cross_icon.png'
 
-export const url = 'https://food-ordering-website-backend-g7l0.onrender.com'
+export const url = 'https://food-ordering-website-backend-xzy1.onrender.com'
 
 export const assets ={
     logo,
