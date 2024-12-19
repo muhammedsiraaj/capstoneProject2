@@ -1,7 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './PlaceOrder.css'
 import { StoreContext } from '../../context/StoreContext'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const PlaceOrder = () => {
 
@@ -14,7 +15,7 @@ const PlaceOrder = () => {
     street:"",
     city:"",
     state:"",
-    zipcode:"",
+    pincode:"",
     country:"",
     phone:"",
   })
@@ -52,6 +53,18 @@ const PlaceOrder = () => {
     }
   }
 
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    if (!token) {
+      navigate('/cart')
+    }
+    else if(getTotalCartAmount()===0)
+    {
+      navigate('/cart')
+    }
+  },[token])
+
   return (
     <form onSubmit={placeOrder} className='place-order'>
       <div className="place-order-left">
@@ -67,7 +80,7 @@ const PlaceOrder = () => {
           <input required name='state' onChange={onChangeHandler} value={data.state} type="text" placeholder='State'/>
         </div>
         <div className="multi-fields">
-          <input name='zipcode' onChange={onChangeHandler} value={data.zipcode} type="text" placeholder='Zip code'/>
+          <input name='pincode' onChange={onChangeHandler} value={data.pincode} type="text" placeholder='Pin code'/>
           <input required name='country' onChange={onChangeHandler} value={data.country} type="text" placeholder='Country'/>
         </div>
         <input required name='phone' onChange={onChangeHandler} value={data.phone} type="text"  placeholder='Phone'/>
@@ -78,17 +91,17 @@ const PlaceOrder = () => {
           <div>
           <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
+              <p>₹{getTotalCartAmount()}</p>
           </div>
           <hr />
           <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>${getTotalCartAmount()===0?0:2}</p>
+              <p>₹{getTotalCartAmount()===0?0:20}</p>
           </div>
           <hr />
           <div className="cart-total-details">
               <b>Total</b>
-              <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
+              <b>₹{getTotalCartAmount()===0?0:getTotalCartAmount()+20}</b>
           </div>
           </div>
           <button type='submit'>PROCEED TO PAYMENT</button>

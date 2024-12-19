@@ -38,6 +38,7 @@
 .navbar .active{
     padding-bottom: 2px;
     border-bottom: 2px solid #49447e;
+    color: #e77722;
 }
 .navbar li{
     cursor: pointer;
@@ -56,6 +57,11 @@
     top: -8px;
     right: -8px;
 }
+.navbar-menu a:hover{
+    transform: scale(1.01);
+    color: #e77722;
+}
+
 @media (max-width:1050px){
     .navbar .logo{
         width: 140px;

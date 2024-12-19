@@ -8,7 +8,7 @@ const Header = () => {
       <div className="header-contents">
       <h2>order.eat.repeat</h2>
       <p>Welcome to BiteBox, where fresh, flavorful dishes meet effortless dining. From quick snacks to hearty meals, we deliver happiness right to your door – one bite at a time!</p>
-      <button>View Menu</button>
+      <a href="#explore-menu" className='btn'><button>View Menu</button></a>
       </div>
     </div>
   )
