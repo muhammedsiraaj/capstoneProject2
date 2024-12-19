@@ -1,10 +1,9 @@
-
 import express from "express";
 import cors from "cors";
 import { connectDB } from "./config/db.js";
 import foodRouter from "./routes/foodRoute.js";
 import userRouter from "./routes/userRoute.js";
-import 'dotenv/config.js';
+import 'dotenv/config.js'
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import dotenv from 'dotenv';
@@ -15,16 +14,9 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 4000;
 
-// CORS configuration - Allow requests from the admin panel's URL
-const corsOptions = {
-  origin: 'https://food-ordering-website-admin-wyi2.onrender.com', // Frontend URL
-  methods: 'GET,POST,PUT,DELETE',
-  allowedHeaders: 'Content-Type,Authorization',
-};
-
 // Middleware
 app.use(express.json());
-app.use(cors(corsOptions)); // Apply the custom CORS configuration
+app.use(cors())
 
 // Database connection
 connectDB();
@@ -34,13 +26,12 @@ app.use("/api/food", foodRouter);
 app.use("/images", express.static("uploads"));
 app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
-app.use("/api/order", orderRouter);
+app.use("/api/order",orderRouter)
 
 app.get("/", (req, res) => {
-  res.send("API is Working");
+    res.send("API is Working");
 });
 
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-});
-
+    console.log(`Server running on http://localhost:${port}`);
+  });
